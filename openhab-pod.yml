@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: openhab-pod
+  labels:
+    app: openhab
+    type: smart-home
+  namespace: smart-home
+
+spec:
+  containers:
+    - name: openhab
+      image: openhab/openhab:latest
+      imagePullPolicy: IfNotPresent
+      ports:
+        - containerPort: 8080
+        - containerPort: 8443  
+      volumeMounts:
+        - mountPath: /openhab/conf
+          name: conf
+        - mountPath: /openhab/addons
+          name: addons
+        - mountPath: /openhab/userdata
+          name: userdata
+    
+  volumes:
+    - name: conf
+      hostPath:
+        path: /home/iain/apps/openhab/conf
+    - name: addons
+      hostPath:
+        path: /home/iain/apps/openhab/addons
+    - name: userdata
+      hostPath:
+        path: /home/iain/apps/openhab/userdata

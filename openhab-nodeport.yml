@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: openhab-services
+  namespace: smart-home
+spec:
+  type: NodePort
+  ports:
+    - targetPort: 8080            # pod port
+      port: 8080                  # Serivce port
+      nodePort: 30008             # external port on node      
+  #selector maps to the Pod
+  selector:
+    app: openhab
+    type: smart-home
