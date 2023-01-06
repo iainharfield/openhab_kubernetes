@@ -12,4 +12,4 @@ To get OpenHab running in a Pod, execute the following commands below.  It won't
 2. kubectl create -f openhab-pod.yml 
 3. kubectl create -f openhab-nodeport.yml
 
-With this basic config,  you should be able to access the volumes and openhab UI on _yournodeip:30008_
+With this basic config,  you should be able to access the volumes and openhab UI on:  _yournodeip:30008_
